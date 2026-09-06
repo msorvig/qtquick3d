@@ -229,11 +229,24 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     PREFIX
         "/"
     FILES
         res/rhishaders/environmentmap.vert
         res/rhishaders/environmentmap.frag
+)
+# debugobject.vert writes gl_PointSize != 1.0 which Tint rejects when
+# emitting WGSL. Keep this shader set SPIR-V/GLSL only.
+qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_debugobject"
+    SILENT
+    PRECOMPILE
+    OPTIMIZED
+    MULTIVIEW
+    NOWGSL
+    PREFIX
+        "/"
+    FILES
         res/rhishaders/debugobject.vert
         res/rhishaders/debugobject.frag
 )
@@ -243,6 +256,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_pertarget"
     OPTIMIZED
     MULTIVIEW
     PERTARGETCOMPILE
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -259,6 +273,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_simplequad_none"
     OPTIMIZED
     MULTIVIEW
     PERTARGETCOMPILE
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -274,6 +289,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_simplequad_linear"
     OPTIMIZED
     MULTIVIEW
     PERTARGETCOMPILE
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -291,6 +307,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_simplequad_aces"
     OPTIMIZED
     MULTIVIEW
     PERTARGETCOMPILE
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -308,6 +325,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_simplequad_hejldawson"
     OPTIMIZED
     MULTIVIEW
     PERTARGETCOMPILE
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -325,6 +343,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_simplequad_filmic"
     OPTIMIZED
     MULTIVIEW
     PERTARGETCOMPILE
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -343,6 +362,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_es3_pertarget"
     MULTIVIEW
     PERTARGETCOMPILE
     GLSL "300es,120,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -355,6 +375,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_clear_mrt"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -369,6 +390,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_es3_gl3"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -399,6 +421,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_compute"
     PRECOMPILE
     OPTIMIZED
     GLSL "310es,430"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -413,6 +436,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_lightprobe_rgbe"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -430,6 +454,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_hdr_none"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -445,6 +470,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_rgbe_none"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -462,6 +488,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_hdr_custom"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -479,6 +506,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_rgbe_custom"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -497,6 +525,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_hdr_linear"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -514,6 +543,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_rgbe_linear"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -532,6 +562,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_hdr_aces"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -549,6 +580,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_rgbe_aces"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -567,6 +599,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_hdr_hejldawson"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -584,6 +617,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_rgbe_hejldawson
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -602,6 +636,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_hdr_filmic"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -619,6 +654,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skybox_rgbe_filmic"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -638,6 +674,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -653,6 +690,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_morph"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -671,6 +709,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_instance"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -689,6 +728,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_instance_
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -708,6 +748,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -726,6 +767,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin_morp
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -745,6 +787,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin_inst
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -764,6 +807,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin_inst
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    NOWGSL
     GLSL "300es,150"
     PREFIX
         "/"
@@ -784,6 +828,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_skyboxcube_runtime_ton
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -801,6 +846,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_lightmapuvraster_default"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,120,330"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -816,6 +862,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_lightmapuvraster_uv"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,120,330"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -833,6 +880,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_lightmapuvraster_uv_tangent"
     OPTIMIZED
     MULTIVIEW
     GLSL "300es,120,330"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -850,6 +898,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_clearimage"
     PRECOMPILE
     OPTIMIZED
     GLSL "320es,430"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -860,6 +909,9 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_clearimage"
         res/rhishaders/clearimage.frag.qsb
 )
 
+# clearimage.frag with QSSG_CLEAR_BUFFER=1 decorates a storage buffer
+# member Coherent, which Tint's SPIR-V reader rejects ("unhandled member
+# decoration: 23"). No WGSL for this one; the plain clearimage set is fine.
 qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_clearbuffer"
     SILENT
     PRECOMPILE
@@ -884,6 +936,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_composite_weightedblen
     MULTIVIEW
     PERTARGETCOMPILE
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -903,6 +956,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_composite_weightedblen
     MULTIVIEW
     PERTARGETCOMPILE
     GLSL "300es,150"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -922,6 +976,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_composite_linkedlist"
     OPTIMIZED
     MULTIVIEW
     GLSL "320es,430"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -940,6 +995,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_composite_linkedlist_m
     OPTIMIZED
     MULTIVIEW
     GLSL "320es,430"
+    WGSL 100
     PREFIX
         "/"
     FILES
@@ -953,6 +1009,8 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_composite_linkedlist_m
         QSSG_MULTISAMPLE
 )
 
+# The buffer-backed linked-list OIT composite shaders decorate a storage
+# buffer member Coherent, which Tint's SPIR-V reader rejects.
 qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_composite_linkedlist_buf"
     SILENT
     PRECOMPILE
