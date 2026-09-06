@@ -1,3 +1,25 @@
+qtquick3d (msorvig fork)
+========================
+
+This is a patched fork of qtquick3d. The upstream module description is below.
+
+Branches named `<qt-branch>-<patch-set>` carry a single patch set on top of the
+corresponding upstream branch. Combined patch sets are merged to the plain Qt
+branch names (`6.11`, `6.12`, `dev`).
+
+wasm-webgpu
+-----------
+
+WGSL shader baking for the WebGPU RHI backend. Quick3D scenes do not render
+correctly on WebGPU yet. Requires the companion qtbase and qtshadertools
+patches on the branch of the same name.
+
+Branches: `dev-wasm-webgpu`
+
+- Quick3D: bake WGSL shaders for WebGPU
+
+---
+
 # Qt Quick 3D
 
 Qt Quick 3D is a module within the Qt framework that provides a high-level interface for creating 3D content for user interfaces.
