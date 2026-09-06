@@ -1731,6 +1731,14 @@ static QString importImp(const QUrl &url, const QJsonObject &options, QSSGSceneD
         importer->SetIOHandler(new ResourceIOSystem);
 #endif
 
+    {
+        QFile probe(filePath);
+        const bool probeOpen = probe.open(QFile::ReadOnly);
+        qDebug("assimp importImp: filePath=\"%s\" probe.open=%d size=%lld err=\"%s\"",
+               qPrintable(filePath), int(probeOpen), probe.size(),
+               qPrintable(probe.errorString()));
+    }
+
     auto sourceScene = importer->ReadFile(filePath.toStdString(), postProcessSteps);
     if (!sourceScene) {
         // Scene failed to load, use logger to get the reason
