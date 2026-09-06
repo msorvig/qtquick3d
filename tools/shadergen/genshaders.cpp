@@ -49,6 +49,7 @@ static void initBaker(QShaderBaker *baker, QRhi *rhi)
     outputs.append({ QShader::MslShader, QShaderVersion(12) }); // Metal 1.2
     outputs.append({ QShader::GlslShader, QShaderVersion(300, QShaderVersion::GlslEs) }); // GLES 3.0+
     outputs.append({ QShader::GlslShader, QShaderVersion(140) }); // OpenGL 3.1+
+    outputs.append({ QShader::WgslShader, QShaderVersion(100) }); // WGSL 1.0
 
     baker->setGeneratedShaders(outputs);
     baker->setGeneratedShaderVariants({ QShader::StandardShader });

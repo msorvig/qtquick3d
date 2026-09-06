@@ -237,6 +237,18 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders"
     FILES
         res/rhishaders/environmentmap.vert
         res/rhishaders/environmentmap.frag
+)
+# debugobject.vert writes gl_PointSize != 1.0 which Tint rejects when
+# emitting WGSL. Keep this shader set SPIR-V/GLSL only.
+qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_debugobject"
+    SILENT
+    PRECOMPILE
+    OPTIMIZED
+    MULTIVIEW
+    NOWGSL
+    PREFIX
+        "/"
+    FILES
         res/rhishaders/debugobject.vert
         res/rhishaders/debugobject.frag
 )
@@ -372,6 +384,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_es3_gl3"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -656,6 +669,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_morph"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -674,6 +688,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_instance"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -692,6 +707,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_instance_
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -711,6 +727,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin"
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -729,6 +746,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin_morp
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -748,6 +766,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin_inst
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"
@@ -767,6 +786,7 @@ qt_internal_add_shaders(Quick3DRuntimeRender "res_shaders_motionvector_skin_inst
     PRECOMPILE
     OPTIMIZED
     MULTIVIEW
+    WGSL 100
     GLSL "300es,150"
     PREFIX
         "/"

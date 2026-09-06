@@ -170,6 +170,9 @@ static void initBakerForNonPersistentUse(QShaderBaker *baker, QRhi *rhi)
         outputs.append({ QShader::MslShader, QShaderVersion(12) }); // Metal 1.2
 #endif // Q_OS_VISIONOS
         break;
+    case QRhi::WebGPU:
+        outputs.append({ QShader::WgslShader, QShaderVersion(100) }); // WGSL 1.0
+        break;
     case QRhi::OpenGLES2:
     {
         QSurfaceFormat format = QSurfaceFormat::defaultFormat();
@@ -223,6 +226,7 @@ void QSSGShaderCache::initBakerForPersistentUse(QShaderBaker *baker, QRhi *)
     outputs.append({ QShader::GlslShader, QShaderVersion(300, QShaderVersion::GlslEs) }); // GLES 3.0+
     outputs.append({ QShader::GlslShader, QShaderVersion(310, QShaderVersion::GlslEs) }); // GLES 3.1+
     outputs.append({ QShader::GlslShader, QShaderVersion(320, QShaderVersion::GlslEs) }); // GLES 3.2+ (image atomics)
+    outputs.append({ QShader::WgslShader, QShaderVersion(100) }); // WGSL 1.0
 
     // If one of the above cannot be generated due to failing at the
     // SPIRV-Cross translation stage, it will be skipped, but bake() will not
