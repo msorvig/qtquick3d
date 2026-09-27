@@ -260,11 +260,18 @@ static bool s_autoDiskCacheEnabled = true;
 
 static bool isAutoDiskCacheEnabled()
 {
+#ifdef Q_OS_WASM
+    // The cache location is in the in-memory file system, so nothing baked
+    // here survives a reload. Persistent use would only make every runtime
+    // bake generate all shader targets instead of the one the QRhi needs.
+    return false;
+#else
     // these three mirror QOpenGLShaderProgram/QQuickGraphicsConfiguration/QSGRhiSupport
     static const bool diskCacheDisabled = qEnvironmentVariableIntValue("QT_DISABLE_SHADER_DISK_CACHE")
                                           || qEnvironmentVariableIntValue("QSG_RHI_DISABLE_DISK_CACHE");
     const bool attrDiskCacheDisabled = (qApp ? qApp->testAttribute(Qt::AA_DisableShaderDiskCache) : false);
     return (!diskCacheDisabled && !attrDiskCacheDisabled && s_autoDiskCacheEnabled);
+#endif
 
 }
 
