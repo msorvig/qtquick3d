@@ -40,7 +40,7 @@ vec2 getDepthClosestUVOffset(vec2 uv)
 void main()
 {
     vec2 uv = uv_coord;
-#if QSHADER_HLSL || QSHADER_MSL
+#if QSHADER_HLSL || QSHADER_MSL || QSHADER_WGSL
     uv.y = 1.0 - uv.y;
 #endif
     vec4 currentColor = texture(currentTexture, uv);

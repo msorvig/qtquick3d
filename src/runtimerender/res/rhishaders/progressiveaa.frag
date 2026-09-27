@@ -14,7 +14,7 @@ layout(binding = 2) uniform sampler2D tex2;
 
 void main()
 {
-#if QSHADER_HLSL || QSHADER_MSL
+#if QSHADER_HLSL || QSHADER_MSL || QSHADER_WGSL
     vec2 uv = vec2(uv_coord.x, 1.0 - uv_coord.y);
     vec4 t1 = texture(tex1, uv);
     vec4 t2 = texture(tex2, uv);
