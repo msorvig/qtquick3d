@@ -63,7 +63,7 @@ layout(binding = 2) uniform samplerType revealageTexture;
 
 void main()
 {
-#if QSHADER_HLSL || QSHADER_MSL
+#if QSHADER_HLSL || QSHADER_MSL || QSHADER_WGSL
     vec2 uv = vec2(uv_coord.x, 1.0 - uv_coord.y);
 
 #else

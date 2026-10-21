@@ -35,7 +35,7 @@ void main()
     vec2 v;
     v.x = b.x - a.x;
 
-    #if defined(QSHADER_HLSL) || defined(QSHADER_MSL)
+    #if defined(QSHADER_HLSL) || defined(QSHADER_MSL) || defined(QSHADER_WGSL)
         v.y = b.y - a.y;
     #else
         v.y = a.y - b.y;

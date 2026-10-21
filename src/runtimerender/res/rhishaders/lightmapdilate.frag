@@ -9,7 +9,7 @@ layout(binding = 0) uniform sampler2D tex;
 void main()
 {
     vec2 uv = v_uv;
-#if QSHADER_HLSL || QSHADER_MSL
+#if QSHADER_HLSL || QSHADER_MSL || QSHADER_WGSL
     uv.y = 1.0 - uv.y;
 #endif
 
